@@ -22,7 +22,7 @@ class _BodyWidgetState extends State<BodyWidget> {
   final List<List<int>> buttonsId = [[1,2,3],[4,5,6],[7,8,9]];
   final GameAdmin _gameAdmin = GameAdmin.getInstance();
   final GameValues _gameValues = GameValues.getInstance();
-  final CharStyle _charStyle = CharStyle();
+  final CharStyle _charStyle = CharStyle.getInstance();
   // final HandleHeadTexts _headTexts = HandleHeadTexts();
 
 
@@ -83,8 +83,13 @@ class _BodyWidgetState extends State<BodyWidget> {
                   drawLine(width:(cardWidth -20)  , height: 1, top: (cardWidth * 0.33) , left: 10),
                   drawLine(width: (cardWidth -20) , height: 1, top: (cardWidth * 0.66) , left: 10),
 
-                  if(_gameAdmin.isWin)
+                  if(_gameValues.isWin)
+                    updateValuesAfterSomeTime(),
+
+                  if(_gameValues.isWin)
                     drawCustomPaint(cardWidth)
+
+
                 ],
               ),
             ),
@@ -94,7 +99,16 @@ class _BodyWidgetState extends State<BodyWidget> {
     );
   }
 
+Widget updateValuesAfterSomeTime(){
+  Future.delayed(const Duration(milliseconds: 1500 ), () {
+    setState(() {
+      _gameValues.updateValuesForNewGame();
+    });
+    // Do something
+  });
 
+  return Container();
+}
 
 
   Widget groupOfSquares(List<int> buttonsId){

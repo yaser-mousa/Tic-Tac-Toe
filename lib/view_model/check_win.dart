@@ -1,3 +1,4 @@
+import 'package:tictactoe/models/game_values.dart';
 import 'package:tictactoe/view_model/line_painter/line_painter.dart';
 
 import '../share/componanets/componanets.dart';
@@ -10,6 +11,7 @@ static  CheckWin? _instance;
   String? _playerNumbersStr;
   bool _isWin=false;
   int? _playerRound;
+final  GameValues _gameValues = GameValues.getInstance();
 
  static CheckWin getInstance(){
     _instance ??= CheckWin ._();
@@ -36,14 +38,12 @@ static  CheckWin? _instance;
       _isWin = (_playerNumbersStr!.contains(element[0])) && _playerNumbersStr!.contains(element[1]) && _playerNumbersStr!.contains(element[2] );
 
      if(_isWin) {
-       showToastMassage('Player ${playerRound+1} Win').then((value) {
-         print('hello /////// /////// ///');
-       });
+       showToastMassage('Player ${playerRound+1} Win');
        LinePainter linePainter = LinePainter.getInstance();
        linePainter.playerNumbersWin = element;
-
+       _gameValues.changeCharsForPlayers();
        _isWin= false;
-      return true;;
+      return true;
      }
 
     }

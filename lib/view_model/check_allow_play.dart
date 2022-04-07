@@ -15,8 +15,11 @@ class CheckAllowPlay{
   bool _checkIsSquareNotBooked(int buttonId){
     if(_gameValues.buttonsBooked[buttonId-1]==''){
       //buttonsBooked[buttonId-1] = 'o';
+
+
       return true;
     }
+
     return false;
   }
 

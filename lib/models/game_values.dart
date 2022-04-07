@@ -1,5 +1,6 @@
 class GameValues{
-  List<String> buttonsBooked = ['', '', '','', '', '','', '', '', ];
+  List<String> buttonsBooked = List<String>.filled(9, '', growable: true);
+  //['', '', '','', '', '','', '', ''];
   List<int> playerOneNumbers = [];
   List<int> playerTwoNumbers = [];
   String playerOneChar = 'o';
@@ -8,6 +9,7 @@ class GameValues{
   List<int> yasserNumbers =[];
   int playerRound = 0;
   bool roundEnd = true;
+  bool isWin = false;
   static bool _playWithComputer =true;
   static GameValues? _instance;
 
@@ -42,5 +44,13 @@ class GameValues{
     playerOneChar = playerTwoChar;
     playerTwoChar = temp;
     yasserChar = temp;
+  }
+
+  void updateValuesForNewGame(){
+    buttonsBooked = List<String>.filled(9, '', growable: true);
+    playerOneNumbers = [];
+    playerTwoNumbers = [];
+    yasserNumbers =[];
+     isWin = false;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../share/style/char_color.dart';
 import '../view_model/handle_head_texts.dart';
 
 class PlayerVsYasserTexts extends StatelessWidget {
@@ -10,6 +11,7 @@ class PlayerVsYasserTexts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _headTextsList = _headTexts.playerNames();
+    CharStyle charStyle = CharStyle.getInstance();
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -18,8 +20,8 @@ class PlayerVsYasserTexts extends StatelessWidget {
         children:  [
           Column(
             children:  [
-              Text(_headTextsList!['char one'] , style: const TextStyle(fontSize: 60,height: 0.5, color: Colors.lightGreen),),
-              Text(_headTextsList!['name one'],style: const TextStyle(fontSize: 20, color: Colors.green),),
+              Text(_headTextsList!['char one'] , style:  TextStyle(fontSize: 60,height: 0.5, color: charStyle.colorForHeadPlayers(_headTextsList!['char one']) ),),
+              Text(_headTextsList!['name one'],style:  TextStyle(fontSize: 20, color: charStyle.colorForHeadPlayers(_headTextsList!['char one'])),),
             ],
           ),
           const SizedBox(width: 30,),
@@ -27,8 +29,8 @@ class PlayerVsYasserTexts extends StatelessWidget {
           const SizedBox(width: 30,),
           Column(
             children:  [
-              Text(_headTextsList!['char two'] , style: const TextStyle(fontSize: 60,height: 0.5, color: Colors.purpleAccent),),
-              Text(_headTextsList!['name two'],style: const TextStyle(fontSize: 20, color: Colors.deepPurple),),
+              Text(_headTextsList!['char two'] , style:  TextStyle(fontSize: 60,height: 0.5, color: charStyle.colorForHeadPlayers(_headTextsList!['char two'])),),
+              Text(_headTextsList!['name two'],style:  TextStyle(fontSize: 20, color: charStyle.colorForHeadPlayers(_headTextsList!['char two'])),),
             ],
           ),
         ],
