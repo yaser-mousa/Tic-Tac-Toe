@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../share/style/themedata.dart';
 import '../widgets/body_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -13,11 +14,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Colors.purple, Colors.orange])),
+      decoration: backGroundColorScaffold(),
       child: const Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(child: BodyWidget()),
