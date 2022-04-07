@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/models/game_values.dart';
+import 'package:tictactoe/view_model/handle_head_texts.dart';
 import 'package:tictactoe/widgets/texts_players_vs.dart';
 
 import '../share/style/char_color.dart';
@@ -22,6 +23,7 @@ class _BodyWidgetState extends State<BodyWidget> {
   final GameAdmin _gameAdmin = GameAdmin.getInstance();
   final GameValues _gameValues = GameValues.getInstance();
   final CharStyle _charStyle = CharStyle();
+  // final HandleHeadTexts _headTexts = HandleHeadTexts();
 
 
   double fontSize =90;
@@ -33,18 +35,21 @@ class _BodyWidgetState extends State<BodyWidget> {
  double cardWidth = width >= height? cardHeight+40: width * 0.9 ;
  fontSize = cardWidth * 0.45;
 
- print(cardWidth);
+
 
     return Center(
       child: Column(
+
+
 
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(height: 20,),
-          const PlayerVsYasser(),
+
+          PlayerVsYasserTexts(),
           Flexible(
-            child: Container(
+            child: SizedBox(
 
               width: cardWidth,
               height: cardWidth,
@@ -110,7 +115,7 @@ class _BodyWidgetState extends State<BodyWidget> {
     return Expanded(
         child: InkWell(
           onTap: (){
-            print(buttonId);
+
             _gameAdmin.addNewNumber(buttonId);
             _charStyle.addChar(_gameValues.buttonsBooked[buttonId-1], buttonId-1);
 

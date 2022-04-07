@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tictactoe/screens/main_screen.dart';
+import 'package:tictactoe/screens/choice_game.dart';
+import 'package:tictactoe/screens/game_screen.dart';
 import 'package:tictactoe/share/style/themedata.dart';
 
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       title: 'Tic Tac Toe',
       theme: themeData,
-      home: const MainScreen(),
+      home: const ChoiceGame(),
     );
   }
 }

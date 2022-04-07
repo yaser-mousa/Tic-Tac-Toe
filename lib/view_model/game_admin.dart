@@ -29,13 +29,15 @@ GameAdmin ._();
 
   void addNewNumber(int buttonId){
     if(_checkAllowPlay.checkAllChecks(buttonId)){
-// print('/////////////');
+
     switch ( _gameValues.playerRound){
       case 0:
         _setValuePlayerOne.setValue(buttonId);
       if(_gameValues.playerOneNumbers.length>2){
         isWin =_checkWin.checkNumbers(_gameValues.playerOneNumbers, _gameValues.playerRound);
       }
+        _gameValues.playerRound =1;
+
 
         break;
 
@@ -44,6 +46,9 @@ GameAdmin ._();
      if(_gameValues.playerTwoNumbers.length>2){
        isWin =_checkWin.checkNumbers(_gameValues.playerTwoNumbers, _gameValues.playerRound);
      }
+     _gameValues.playerRound =0;
+
+
 
         break;
     }

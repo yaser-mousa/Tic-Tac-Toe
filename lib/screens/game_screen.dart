@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 
+import '../models/game_values.dart';
 import '../share/style/themedata.dart';
 import '../widgets/body_widget.dart';
+import 'choice_game.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class GameScreen extends StatefulWidget {
+   const GameScreen({Key? key,}) : super(key: key);
+
+
 
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _GameScreenState createState() => _GameScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _GameScreenState extends State<GameScreen> {
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: backGroundColorScaffold(),
       child: const Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(child: BodyWidget()),
       ),
-
 
     );
   }

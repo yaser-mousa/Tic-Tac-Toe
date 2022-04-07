@@ -6,8 +6,8 @@ class SetValuePlayerTwo implements SetValue{
   @override
   void setValue(int buttonId) {
     _gameValues.playerTwoNumbers.add(buttonId);
-    _gameValues.buttonsBooked[ buttonId -1] = 'x';
-    _gameValues.playerRound =0;
+    _gameValues.buttonsBooked[ buttonId -1] = _gameValues.playerTwoChar;
+
   }
 
 }
