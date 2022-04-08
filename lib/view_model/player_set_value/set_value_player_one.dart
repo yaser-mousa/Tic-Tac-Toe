@@ -7,8 +7,9 @@ class SetValuePlayerOne implements SetValue{
 
   @override
   void setValue(int buttonId) {
-    _gameValues.playerOneNumbers.add(buttonId);
+    _gameValues.playerOneBoxesNumbers.add(buttonId);
     _gameValues.buttonsBooked[ buttonId -1] = _gameValues.playerOneChar;
+    _gameValues.bookedBoxesCount++;
 
   }
 

@@ -5,6 +5,7 @@ import 'package:tictactoe/view_model/player_set_value/set_value_player_one.dart'
 import 'package:tictactoe/view_model/player_set_value/set_value_player_two.dart';
 
 import 'check_allow_play.dart';
+import 'check_game_end.dart';
 import 'check_player_list.dart';
 import 'check_win.dart';
 
@@ -19,6 +20,8 @@ final SetValuePlayerTwo _setValuePlayerTwo = SetValuePlayerTwo();
 final CheckAllowPlay _checkAllowPlay = CheckAllowPlay.getInstance();
 
 final CheckWin _checkWin = CheckWin.getInstance();
+
+ final IsGameEnd isGameEnd = IsGameEnd();
 
 static GameAdmin? _instance;
 GameAdmin ._();
@@ -35,9 +38,8 @@ GameAdmin ._();
     switch ( _gameValues.playerRound){
       case 0:
         _setValuePlayerOne.setValue(buttonId);
-      if(_gameValues.playerOneNumbers.length>2){
-        _gameValues.isWin =_checkWin.checkNumbers(_gameValues.playerOneNumbers, _gameValues.playerRound);
-
+      if(_gameValues.playerOneBoxesNumbers.length>2){
+        _gameValues.isWin =_checkWin.checkForWinningNumbers(_gameValues.playerOneBoxesNumbers);
       }
         _gameValues.playerRound =1;
 
@@ -47,16 +49,19 @@ GameAdmin ._();
 
       case 1:
      _setValuePlayerTwo.setValue(buttonId);
-     if(_gameValues.playerTwoNumbers.length>2){
-       _gameValues.isWin =_checkWin.checkNumbers(_gameValues.playerTwoNumbers, _gameValues.playerRound);
+     if(_gameValues.playerTwoBoxesNumbers.length>2){
+       _gameValues.isWin =_checkWin.checkForWinningNumbers(_gameValues.playerTwoBoxesNumbers);
      }
      _gameValues.playerRound =0;
 
 
         break;
-    }
+    }//// switch
 
 
+
+
+   _gameValues.gameEnd = isGameEnd.checkGameEnd([]);
 
 
 

@@ -83,7 +83,7 @@ class _BodyWidgetState extends State<BodyWidget> {
                   drawLine(width:(cardWidth -20)  , height: 1, top: (cardWidth * 0.33) , left: 10),
                   drawLine(width: (cardWidth -20) , height: 1, top: (cardWidth * 0.66) , left: 10),
 
-                  if(_gameValues.isWin)
+                  if(_gameValues.isWin ||  _gameValues.gameEnd)
                     updateValuesAfterSomeTime(),
 
                   if(_gameValues.isWin)

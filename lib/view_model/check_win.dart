@@ -1,4 +1,5 @@
 import 'package:tictactoe/models/game_values.dart';
+import 'package:tictactoe/view_model/check_game_end.dart';
 import 'package:tictactoe/view_model/line_painter/line_painter.dart';
 
 import '../share/componanets/componanets.dart';
@@ -6,39 +7,43 @@ import '../share/componanets/componanets.dart';
 class CheckWin{
 static  CheckWin? _instance;
   CheckWin ._();
-  final List<String> _winningNumbers = ['123', '456', '789', '147', '258', '369','159', '357'];
+  CheckWin();
+  final List<String> winningNumbers = ['123', '456', '789', '147', '258', '369','159', '357'];
   List<int> _playerListNumbersInt = [];
-  String? _playerNumbersStr;
+  String? playerNumbersStr;
   bool _isWin=false;
-  int? _playerRound;
+  // int? _playerRound;
 final  GameValues _gameValues = GameValues.getInstance();
+
+
 
  static CheckWin getInstance(){
     _instance ??= CheckWin ._();
     return _instance!;
   }
 
-  void _convertToStr(){
+void setValues(List<int> playerListNumbersInt){
+  _playerListNumbersInt  = playerListNumbersInt;
+  convertToStr();
+}
 
-    _playerNumbersStr = _playerListNumbersInt.join();
+  void convertToStr(){
+     playerNumbersStr = _playerListNumbersInt.join();
   }
 
-  void _setValues(List<int> playerListNumbersInt , int playerRound){
-    _playerListNumbersInt  = playerListNumbersInt;
-    _playerRound = playerRound;
-  }
 
-  bool checkNumbers(List<int> playerListNumbersInt , int playerRound){
 
-    _setValues(playerListNumbersInt,playerRound );
-    _convertToStr();
+  bool checkForWinningNumbers(List<int> playerListNumbersInt ){
 
-    for (var element in _winningNumbers) {
+   setValues(playerListNumbersInt);
+
+
+    for (var element in winningNumbers) {
       // print(_playerNumbersStr);
-      _isWin = (_playerNumbersStr!.contains(element[0])) && _playerNumbersStr!.contains(element[1]) && _playerNumbersStr!.contains(element[2] );
+      _isWin = (playerNumbersStr!.contains(element[0])) && playerNumbersStr!.contains(element[1]) && playerNumbersStr!.contains(element[2] );
 
      if(_isWin) {
-       showToastMassage('Player ${playerRound+1} Win');
+       showToastMassage('Player ${_gameValues.playerRound+1} Win');
        LinePainter linePainter = LinePainter.getInstance();
        linePainter.playerNumbersWin = element;
        _gameValues.changeCharsForPlayers();
@@ -47,6 +52,8 @@ final  GameValues _gameValues = GameValues.getInstance();
      }
 
     }
+
+
 
     return false;
 

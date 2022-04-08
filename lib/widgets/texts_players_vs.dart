@@ -6,12 +6,13 @@ import '../view_model/handle_head_texts.dart';
 class PlayerVsYasserTexts extends StatelessWidget {
    PlayerVsYasserTexts({Key? key }) : super(key: key);
   final HandleHeadTexts _headTexts = HandleHeadTexts();
-  Map<String, dynamic>? _headTextsList;
+    Map<String, dynamic>? _headTextsList;
+  final CharStyle charStyle = CharStyle.getInstance();
 
   @override
   Widget build(BuildContext context) {
     _headTextsList = _headTexts.playerNames();
-    CharStyle charStyle = CharStyle.getInstance();
+
 
     return Padding(
       padding: const EdgeInsets.all(8.0),

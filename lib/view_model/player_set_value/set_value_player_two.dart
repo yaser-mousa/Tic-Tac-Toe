@@ -5,9 +5,9 @@ class SetValuePlayerTwo implements SetValue{
   final GameValues _gameValues = GameValues.getInstance();
   @override
   void setValue(int buttonId) {
-    _gameValues.playerTwoNumbers.add(buttonId);
+    _gameValues.playerTwoBoxesNumbers.add(buttonId);
     _gameValues.buttonsBooked[ buttonId -1] = _gameValues.playerTwoChar;
-
+    _gameValues.bookedBoxesCount++;
   }
 
 }
