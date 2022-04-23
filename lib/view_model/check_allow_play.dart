@@ -16,7 +16,6 @@ class CheckAllowPlay{
     if(_gameValues.buttonsBooked[buttonId-1]==''){
       //buttonsBooked[buttonId-1] = 'o';
 
-
       return true;
     }
 
@@ -36,9 +35,10 @@ class CheckAllowPlay{
   bool checkAllChecks(int buttonId){
     if(_checkIsSquareNotBooked(buttonId)){
       if(_checkRoundEnd()){
+        print('_checkRoundEnd');
         return true;
       }
-
+      return false;
     }
 
     return false;

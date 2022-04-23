@@ -1,4 +1,6 @@
- import '../models/game_values.dart';
+ import 'package:tictactoe/view_model/find_empty_boxes.dart';
+
+import '../models/game_values.dart';
 import '../share/componanets/componanets.dart';
 import 'future _chances_of_winning.dart';
 
@@ -6,6 +8,7 @@ class IsGameEnd{
 
 
   final GameValues _gameValues = GameValues.getInstance();
+  final FindEmptyBoxes _findEmptyBoxes = FindEmptyBoxes.getInstance();
   List<int> boxesEmptyIndex = [];
   bool isEnd= false;
  final FutureChancesWinning _futureChancesWinning = FutureChancesWinning.getInstance();
@@ -14,7 +17,7 @@ class IsGameEnd{
 bool checkGameEnd(List<int> playerListNumbersInt ){
 
   if(_gameValues.bookedBoxesCount>=7 && _gameValues.bookedBoxesCount<9){
-    _findEmptyBoxes();
+    boxesEmptyIndex = _findEmptyBoxes.findEmptyBoxes();
 
     _futureChancesWinning.boxesEmptyIndex = boxesEmptyIndex;
 
@@ -28,17 +31,7 @@ bool checkGameEnd(List<int> playerListNumbersInt ){
 
  }
 
- void _findEmptyBoxes(){
-   boxesEmptyIndex = [];
-   for (int index=0;  index< _gameValues.buttonsBooked.length ; index++) {
-     if(_gameValues.buttonsBooked[index]==''){
-       boxesEmptyIndex.add(index+1);
-     }
 
-   }
-
-   // print( boxesEmptyIndex);
- }
 
 
 

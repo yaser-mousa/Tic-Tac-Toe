@@ -8,10 +8,13 @@ class GameValues{
   String yasserChar = 'x';
   List<int> computerBoxesNumbers =[];
   int playerRound = 0;
+  int computerRound = 0;
   bool roundEnd = true;
   bool gameEnd =false;
   bool isWin = false;
   int bookedBoxesCount =0;
+  int difficultNumber = 0;
+  int winingIndex = 0;
   static bool _playWithComputer =true;
   static GameValues? _instance;
 
@@ -53,8 +56,18 @@ class GameValues{
     playerOneBoxesNumbers = [];
     playerTwoBoxesNumbers = [];
     computerBoxesNumbers =[];
-     isWin = false;
+    if(!isWin){
+      if(playerRound ==0){
+        playerRound = 1;
+      }else{
+        playerRound = 0;
+      }
+    }
+    // print("updateValuesForNewGame PlayRound == ${playerRound}");
+    isWin = false;
     bookedBoxesCount=0;
     gameEnd = false;
+    roundEnd = true;
+
   }
 }

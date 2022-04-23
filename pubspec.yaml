@@ -37,6 +37,8 @@ dependencies:
   # add this line to your dependencies
   fluttertoast: ^8.0.9
 
+  auto_size_text: ^3.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -47,7 +47,7 @@ void setValues(List<int> playerListNumbersInt){
        LinePainter linePainter = LinePainter.getInstance();
        linePainter.playerNumbersWin = element;
        _gameValues.changeCharsForPlayers();
-       _isWin= false;
+      // _isWin= false;
       return true;
      }
 
