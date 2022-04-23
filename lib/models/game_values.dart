@@ -15,6 +15,7 @@ class GameValues{
   int bookedBoxesCount =0;
   int difficultNumber = 0;
   int winingIndex = 0;
+  int gameCount = 0;
   static bool _playWithComputer =true;
   static GameValues? _instance;
 
@@ -53,6 +54,7 @@ class GameValues{
 
   void updateValuesForNewGame(){
     buttonsBooked = List<String>.filled(9, '', growable: true);
+    gameCount++;
     playerOneBoxesNumbers = [];
     playerTwoBoxesNumbers = [];
     computerBoxesNumbers =[];

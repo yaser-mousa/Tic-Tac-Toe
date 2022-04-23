@@ -1,6 +1,7 @@
 
 
 import 'package:tictactoe/models/game_values.dart';
+import 'package:tictactoe/view_model/difficulty_levels/plansGame/plans_game.dart';
 
 import '../computer_random.dart';
 import '../find_empty_boxes.dart';
@@ -10,10 +11,9 @@ import 'interface_difficulty_levels.dart';
 class MediumLevel implements IDifficultyLevels{
   final FindEmptyBoxes _findEmptyBoxes = FindEmptyBoxes.getInstance();
   final ComputerRandom _computerRandom = ComputerRandom();
- final FutureChancesWinning _futureChancesWinning = FutureChancesWinning.getInstance();
- List<int> boxesEmptyIndex = [];
  final GameValues _gameValues = GameValues.getInstance();
- int winingIndex = 0;
+ final PlanesGame _planesGame = PlanesGame.getInstance();
+  int planNumber=0;
 
   @override
   int getNumber() {
@@ -24,30 +24,21 @@ class MediumLevel implements IDifficultyLevels{
     }
 
     if(_gameValues.computerBoxesNumbers.length>1){
-      _futureChancesWinning.boxesEmptyIndex = _findEmptyBoxes.findEmptyBoxes();
 
-      _futureChancesWinning.checkWining(_gameValues.computerBoxesNumbers);
+      planNumber =  _planesGame.planOne();
 
-      winingIndex = _gameValues.winingIndex;
-      _gameValues.winingIndex = 0;
-    print('winingIndex == $winingIndex');
-      if( winingIndex != 0){
-        return winingIndex;
+      if(  planNumber != 0){
+        return  planNumber;
       }
 
     }
 
  if(_gameValues.playerOneBoxesNumbers.length>1){
 
-   _futureChancesWinning.boxesEmptyIndex = _findEmptyBoxes.findEmptyBoxes();
+   planNumber = _planesGame.planTwo();
 
-   _futureChancesWinning.checkWining(_gameValues.playerOneBoxesNumbers);
-
-   winingIndex = _gameValues.winingIndex;
-   _gameValues.winingIndex = 0;
-   print('winingIndex == $winingIndex');
-   if( winingIndex!= 0){
-     return winingIndex;
+   if( planNumber!= 0){
+     return planNumber;
    }
  }
 
